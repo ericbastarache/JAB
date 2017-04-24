@@ -4,23 +4,28 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour {
 
-	public float speed = 100.0f;
+	private bool ballIsActive;
+	private Vector3 ballPosition;
+	private Vector2 ballInitialForce;
+
+	public GameObject playerObject;
 
 	void Start () {
-		GetComponent<Rigidbody2D>().velocity = Vector2.up * speed;
+		ballInitialForce = new Vector2 (100.0f, 300.0f);
+		ballIsActive = false;
+		ballPosition = transform.position;
 	}
 
-	float hitBall (Vector2 ballPos, Vector2 racketPos, float racketWidth) {
-		return (ballPos.x - racketPos.x) / racketWidth;
-	}
-
-	void onCollisionEnter2D(Collision2D other) {
-		if (other.gameObject.name == "paddle_1") {
-			float x = hitBall (transform.position, other.transform.position, other.collider.bounds.size.x);
-
-			Vector2 dir = new Vector2(x, 1).normalized;
-
-			GetComponent<Rigidbody2D>().velocity = dir * speed;
+	void Update () {
+		if (Input.GetMouseButtonDown (0)) {
+			if (!ballIsActive) {
+				GetComponent<Rigidbody2D>().AddForce (ballInitialForce);
+				ballIsActive = !ballIsActive;
+			}
+		}
+		if (!ballIsActive && playerObject != null) {
+			ballPosition.x = playerObject.transform.position.x;
+			transform.position = ballPosition;
 		}
 	}
 }

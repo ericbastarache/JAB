@@ -4,13 +4,30 @@ using UnityEngine;
 
 public class PauseScript : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+	void Awake () {
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	// Use this for initialization
+	void Start () {
+		gameObject.SetActive(false);
+	}
+
+	void FixedUpdate () {
+		Debug.Log((string)Input.inputString);
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+			PauseGame();
+		} else {
+			ResumeGame();
+		}
+	}
+
+	private void PauseGame() {
+		Time.timeScale = 0;
+		gameObject.SetActive(true);
+	}
+
+	private void ResumeGame () {
+		Time.timeScale = 1;
+		gameObject.SetActive (false);
 	}
 }

@@ -1,33 +1,26 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PauseScript : MonoBehaviour {
 
-	void Awake () {
-		
-	}
+	[SerializeField] private GameObject go;
+	private bool isPauseActive = false;
 	// Use this for initialization
 	void Start () {
-		gameObject.SetActive(false);
+		go.SetActive(false);
 	}
 
-	void FixedUpdate () {
-		Debug.Log((string)Input.inputString);
-		if (Input.GetKeyDown(KeyCode.Escape)) {
-			PauseGame();
-		} else {
-			ResumeGame();
+	void Update () {
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			TogglePauseMenu ();
 		}
 	}
 
-	private void PauseGame() {
-		Time.timeScale = 0;
-		gameObject.SetActive(true);
-	}
-
-	private void ResumeGame () {
-		Time.timeScale = 1;
-		gameObject.SetActive (false);
+	public void TogglePauseMenu () {
+		isPauseActive = !isPauseActive;
+		Time.timeScale = Convert.ToInt32(!isPauseActive);
+		go.SetActive(isPauseActive);
 	}
 }

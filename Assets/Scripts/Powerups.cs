@@ -17,6 +17,7 @@ public class Powerups : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D pUp) {
-		print ("Collided with paddle");
+		print("Collided with paddle");
+		Destroy(gameObject);
 	}
 }

@@ -8,11 +8,11 @@ public class PaddleScript : MonoBehaviour {
 	void Start () {
 		
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		Vector3 paddlePos = new Vector3(0f, this.transform.position.y, 0f);
-		float mousePos = Input.mousePosition.x / Screen.width * 16;
+		float mousePos = Input.mousePosition.x / Screen.width * 16.8f - 8.4f;
 
 		paddlePos.x = Mathf.Clamp(mousePos, -8.4f, 8.4f);
 

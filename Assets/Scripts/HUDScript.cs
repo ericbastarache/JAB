@@ -25,7 +25,7 @@ public class HUDScript : MonoBehaviour {
 		lives--;
 		livesText.text = lives.ToString ();
 		if (lives <= 0) {
-			levelManager.LoadLevel ("Win Screen");
+			levelManager.LoadLevel ("Game Over");
 		}
 	}
 }

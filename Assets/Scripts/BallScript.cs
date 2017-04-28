@@ -24,7 +24,7 @@ public class BallScript : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D col) {
-		Vector2 tweak = new Vector2 (Random.Range (0f, 0.2f), Random.Range (0f, 0.2f));
+		Vector2 tweak = new Vector2 (Random.Range(-0.402f, 0.402f), Random.Range(-0.402f, 0.402f));
 		GetComponent<Rigidbody2D> ().velocity += tweak;
 	}
 	
@@ -35,7 +35,7 @@ public class BallScript : MonoBehaviour {
 
 			if (Input.GetMouseButtonDown (0)) {
 				hasStarted = true;
-				GetComponent<Rigidbody2D> ().velocity = new Vector2 (2f, 10f);
+				GetComponent<Rigidbody2D> ().velocity = new Vector2 (2.0f, -10f);
 			}
 		}
 	}

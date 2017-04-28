@@ -4,8 +4,13 @@ using UnityEngine;
 public class LoseCollider : MonoBehaviour {
 
 	public LevelManager levelManager;
+	HUDScript hud;
+	BallScript ball;
+	void Start() {
+		hud = GameObject.FindWithTag ("Hud").GetComponent<HUDScript>();
+		ball = GameObject.FindWithTag ("Ball").GetComponent<BallScript> ();
+	}
 
-	private float numLives = 3;
 	void OnCollisionEnter2D(Collision2D collision) {
 		if (collision.gameObject.tag == "Collectable") {
 			Destroy (collision.gameObject);
@@ -14,10 +19,8 @@ public class LoseCollider : MonoBehaviour {
 			Destroy (collision.gameObject);
 		}
 		if (collision.gameObject.tag == "Ball") {
-			numLives--;
-			if (numLives <= 0) {
-				levelManager.LoadLevel ("Win Screen");
-			}
+			hud.decreaseLives();
+			ball.Restart ();
 		}
 	}
 }

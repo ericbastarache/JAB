@@ -7,22 +7,22 @@ using UnityEngine.UI;
 public class Powerups : MonoBehaviour {
 
 	public PaddleScript paddle;
-	private float coinVal = 150;
-	public Text scoreText;
+	private int coinVal = 150;
+	HUDScript hud;
 	// Use this for initialization
 	void Start () {
-		scoreText = GameObject.Find("Score").GetComponent<Text>();
+		hud = GameObject.FindWithTag ("Hud").GetComponent<HUDScript> ();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		
 	}
 
-	void OnCollisionEnter2D(Collision2D pUp) {
-		if (pUp.gameObject.tag == "Coin") {
-			scoreText.text += Convert.ToString(coinVal);
-			Destroy(gameObject);
+	void OnCollisionEnter2D(Collision2D col) {
+		if (paddle) {
+			hud.updateScore (coinVal);
+			Destroy (this.gameObject);
 		}
 	}
 }

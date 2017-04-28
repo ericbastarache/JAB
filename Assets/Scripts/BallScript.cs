@@ -8,11 +8,19 @@ public class BallScript : MonoBehaviour {
 
 	private bool hasStarted = false;
 	private Vector3 paddleToBall;
-
+	private Vector3 initialBallPos;
+	private Vector3 paddleInitialPos;
 
 	// Use this for initialization
 	void Start () {
+		initialBallPos = this.transform.position;
+		paddleInitialPos = paddle.transform.position;
 		paddleToBall = this.transform.position - paddle.transform.position;
+	}
+
+	public void Restart() {
+		paddleToBall = initialBallPos - paddleInitialPos;
+		hasStarted = false;
 	}
 	
 	// Update is called once per frame

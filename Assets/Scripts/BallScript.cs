@@ -32,10 +32,9 @@ public class BallScript : MonoBehaviour {
 	void Update () {
 		if (!hasStarted) {
 			this.transform.position = paddle.transform.position + paddleToBall;
-
 			if (Input.GetMouseButtonDown (0)) {
 				hasStarted = true;
-				GetComponent<Rigidbody2D> ().velocity = new Vector2 (2.0f, -10f);
+				GetComponent<Rigidbody2D> ().velocity = new Vector2 (paddle.transform.position.x, -10f);
 			}
 		}
 	}

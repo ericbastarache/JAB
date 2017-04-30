@@ -11,7 +11,7 @@ public class GameOver : MonoBehaviour {
 	}
 
 	public void PlayAgain () {
-		levelManager.LoadLevel ("Game");
+		levelManager.LoadLevel ("Level_01");
 	}
 
 	public void ExitGame () {

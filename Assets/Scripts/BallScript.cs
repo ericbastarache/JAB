@@ -30,19 +30,20 @@ public class BallScript : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col) {
 		if (col.gameObject.tag == "Paddle") {
-			float x = hitPosition (this.transform.position, col.transform.position, 0.96f);
+			float x = hitPosition (this.transform.position, col.transform.position, 96f);
 			Vector2 dir = new Vector2 (x, 1).normalized;
 			GetComponent<Rigidbody2D>().velocity = dir * speed;
 		}
 	}
-	
+		
 	// Update is called once per frame
 	void Update () {
 		if (!hasStarted) {
 			this.transform.position = paddle.transform.position + paddleToBall;
-			if (Input.GetMouseButtonDown (0)) {
+			if (Input.GetMouseButtonDown(0)) {
 				hasStarted = true;
 				GetComponent<Rigidbody2D> ().velocity = new Vector2(2f, -10f);
+
 			}
 		}
 	}

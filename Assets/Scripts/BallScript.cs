@@ -10,6 +10,7 @@ public class BallScript : MonoBehaviour {
 	private Vector3 paddleToBall;
 	private Vector3 initialBallPos;
 	private Vector3 paddleInitialPos;
+	private float speed = 10f;
 
 	// Use this for initialization
 	void Start () {
@@ -23,9 +24,16 @@ public class BallScript : MonoBehaviour {
 		hasStarted = false;
 	}
 
+	float hitPosition (Vector2 ballPos, Vector2 racketPos, float racketWidth) {
+		return (ballPos.x - racketPos.x) / racketWidth;
+	}
+
 	void OnCollisionEnter2D(Collision2D col) {
-		Vector2 tweak = new Vector2 (Random.Range(-0.402f, 0.402f), Random.Range(-0.402f, 0.402f));
-		GetComponent<Rigidbody2D> ().velocity += tweak;
+		if (col.gameObject.tag == "Paddle") {
+			float x = hitPosition (this.transform.position, col.transform.position, 0.96f);
+			Vector2 dir = new Vector2 (x, 1).normalized;
+			GetComponent<Rigidbody2D>().velocity = dir * speed;
+		}
 	}
 	
 	// Update is called once per frame
@@ -34,7 +42,7 @@ public class BallScript : MonoBehaviour {
 			this.transform.position = paddle.transform.position + paddleToBall;
 			if (Input.GetMouseButtonDown (0)) {
 				hasStarted = true;
-				GetComponent<Rigidbody2D> ().velocity = new Vector2 (paddle.transform.position.x, -10f);
+				GetComponent<Rigidbody2D> ().velocity = new Vector2(2f, -10f);
 			}
 		}
 	}

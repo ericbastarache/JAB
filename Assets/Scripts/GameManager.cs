@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour {
 	public float paddleUp = 0.25f;
 	public float starPower = 0.02f;
 	public float super = 0.01f;
+	public float brickCount = 103f;
 
 	public Text scoreText;
 	public Text livesText;

@@ -40,7 +40,7 @@ public class BallScript : MonoBehaviour {
 	void calculateVelocity (float s) {
 		Vector2 dir = new Vector2 (s, 1).normalized;
 		Vector2 vel = dir * speed;
-		Vector2 tweak = new Vector2 (Random.Range(0f, 0.5f), Random.Range(0f, 0.5f));
+		Vector2 tweak = new Vector2 (Random.Range(0f, 0.7f), Random.Range(0f, 0.7f));
 		GetComponent<Rigidbody2D> ().velocity = vel + tweak;
 	}
 		

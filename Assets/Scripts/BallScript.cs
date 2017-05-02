@@ -31,15 +31,17 @@ public class BallScript : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D col) {
-		if (col.gameObject.tag == "Paddle") {
-			float x = hitPosition (this.transform.position, col.transform.position, 96f);
+		if (col.gameObject.tag == "Player") {
+			float x = hitPosition (this.transform.position, col.transform.position, col.collider.bounds.size.x);
 			calculateVelocity (x);
 		}
 	}
 
-	void calculateVelocity(float s) {
+	void calculateVelocity (float s) {
 		Vector2 dir = new Vector2 (s, 1).normalized;
-		GetComponent<Rigidbody2D> ().velocity += dir * speed;
+		Vector2 vel = dir * speed;
+		Vector2 tweak = new Vector2 (Random.Range(0f, 0.5f), Random.Range(0f, 0.5f));
+		GetComponent<Rigidbody2D> ().velocity = vel + tweak;
 	}
 		
 	// Update is called once per frame

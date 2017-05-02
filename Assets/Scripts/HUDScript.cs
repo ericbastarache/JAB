@@ -5,27 +5,28 @@ using UnityEngine.UI;
 
 public class HUDScript : MonoBehaviour {
 
-	int score = 0;
-	int lives = 3;
-	public Text scoreText;
-	public Text livesText;
-	public LevelManager levelManager;
+//	int score = 0;
+//	int lives = 3;
+//	public Text scoreText;
+//	public Text livesText;
+//	public LevelManager levelManager;
+	public GameManager GM;
 
 	public void updateScore (int amount) {
-		score += amount;
-		scoreText.text = score.ToString ();
+		GM.score += amount;
+		GM.scoreText.text = GM.score.ToString ();
 	}
 
 	public void increaseLives() {
-		lives++;
-		livesText.text = lives.ToString ();
+		GM.lives++;
+		GM.livesText.text = GM.lives.ToString ();
 	}
 
 	public void decreaseLives() {
-		lives--;
-		livesText.text = lives.ToString ();
-		if (lives <= 0) {
-			levelManager.LoadLevel ("Game Over");
+		GM.lives--;
+		GM.livesText.text = GM.lives.ToString ();
+		if (GM.lives <= 0) {
+			GM.levelManager.LoadLevel ("Game Over");
 		}
 	}
 }

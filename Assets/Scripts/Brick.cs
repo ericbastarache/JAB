@@ -10,6 +10,7 @@ public class Brick : MonoBehaviour {
 	private int timesHit;
 	public int blockVal;
 	HUDScript hud;
+	public GameManager GM;
 	// Use this for initialization
 	void Start () {
 		timesHit = 0;
@@ -26,6 +27,11 @@ public class Brick : MonoBehaviour {
 		if (timesHit >= maxHits) {
 			hud.updateScore (blockVal);
 			Destroy(this.gameObject);
+			GM.brickCount--;
+
+			if (GM.brickCount <= 0) {
+				GM.levelManager.LoadLevel ("Level_02");
+			}
 		}
 	}
 }

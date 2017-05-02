@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
@@ -14,6 +15,10 @@ public class GameManager : MonoBehaviour {
 	public double paddleUp = 0.25;
 	public double starPower = 0.02;
 	public double super = 0.01;
+
+	public Text scoreText;
+	public Text livesText;
+	public LevelManager levelManager;
 	// Use this for initialization
 	void Start () {
 		

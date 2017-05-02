@@ -5,16 +5,17 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
-	public double lives = 3;
-	public double coinChance = 0.3;
-	public double growPaddleChance = 0.2;
-	public double extraLife = 0.05;
-	public double multipleBall = 0.1;
-	public double shrinkPowerDown = 0.3;
-	public double stickyPower = 0.4;
-	public double paddleUp = 0.25;
-	public double starPower = 0.02;
-	public double super = 0.01;
+	public float lives = 3f;
+	public float score = 0f;
+	public float coinChance = 0.3f;
+	public float growPaddleChance = 0.2f;
+	public float extraLife = 0.05f;
+	public float multipleBall = 0.1f;
+	public float shrinkPowerDown = 0.3f;
+	public float stickyPower = 0.4f;
+	public float paddleUp = 0.25f;
+	public float starPower = 0.02f;
+	public float super = 0.01f;
 
 	public Text scoreText;
 	public Text livesText;

@@ -5,11 +5,6 @@ using UnityEngine.UI;
 
 public class HUDScript : MonoBehaviour {
 
-//	int score = 0;
-//	int lives = 3;
-//	public Text scoreText;
-//	public Text livesText;
-//	public LevelManager levelManager;
 	public GameManager GM;
 
 	public void updateScore (int amount) {

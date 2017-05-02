@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
+
 	public float lives = 3f;
 	public float score = 0f;
 	public float coinChance = 0.3f;
